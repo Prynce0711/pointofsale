@@ -1,4 +1,7 @@
+"use client";
+
 import { logoutAction } from "@/app/actions/auth";
+import { AnimatedButton } from "@/app/Shared/Motion/Motion";
 
 type HeaderProps = {
   title: string;
@@ -9,28 +12,28 @@ type HeaderProps = {
 
 export default function Header({ title, subtitle, actions, userName }: HeaderProps) {
   return (
-    <header className="flex flex-col gap-4 border-b border-slate-200 bg-white px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
+    <header className="flex flex-col gap-4 border-b border-[#ead8c5] bg-[#fffaf3]/90 px-5 py-4 backdrop-blur lg:flex-row lg:items-center lg:justify-between">
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#c9823a]">
           Coffee Shop POS
         </p>
-        <h1 className="mt-1 text-2xl font-semibold text-slate-950">{title}</h1>
-        {subtitle ? <p className="mt-1 text-sm text-slate-500">{subtitle}</p> : null}
+        <h1 className="mt-1 text-2xl font-semibold text-[#2c1810]">{title}</h1>
+        {subtitle ? <p className="mt-1 text-sm text-[#7b6254]">{subtitle}</p> : null}
       </div>
       <div className="flex flex-wrap items-center gap-2">
         {actions}
         {userName ? (
           <>
-            <span className="rounded-md bg-slate-100 px-3 py-2 text-sm font-medium text-slate-700">
+            <span className="rounded-xl bg-[#f3e6d5] px-3 py-2 text-sm font-medium text-[#4b2f22]">
               {userName}
             </span>
             <form action={logoutAction}>
-              <button
+              <AnimatedButton
                 type="submit"
-                className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                className="rounded-xl border border-[#d8bf9f] bg-white/70 px-3 py-2 text-sm font-semibold text-[#4b2f22] hover:bg-[#fff8ef]"
               >
                 Sign out
-              </button>
+              </AnimatedButton>
             </form>
           </>
         ) : null}

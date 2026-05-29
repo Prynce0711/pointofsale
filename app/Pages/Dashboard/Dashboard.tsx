@@ -14,6 +14,7 @@ import {
 } from "@/app/lib/labels";
 import Card from "@/app/Shared/Card/Card";
 import EmptyState from "@/app/Shared/EmptyState/EmptyState";
+import { AnimatedItem, AnimatedList, AnimatedRow } from "@/app/Shared/Motion/Motion";
 
 export default async function Dashboard() {
   const today = startOfToday();
@@ -80,12 +81,20 @@ export default async function Dashboard() {
 
   return (
     <div className="grid gap-5">
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Metric label="Sales today" value={formatCurrency(dailyRevenue)} />
-        <Metric label="Orders today" value={String(todaySales.length)} />
-        <Metric label="Items sold today" value={String(dailyItems)} />
-        <Metric label="Active employees" value={String(activeEmployees)} />
-      </section>
+      <AnimatedList className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <AnimatedItem>
+          <Metric label="Sales today" value={formatCurrency(dailyRevenue)} tone="dark" />
+        </AnimatedItem>
+        <AnimatedItem>
+          <Metric label="Orders today" value={String(todaySales.length)} />
+        </AnimatedItem>
+        <AnimatedItem>
+          <Metric label="Items sold today" value={String(dailyItems)} />
+        </AnimatedItem>
+        <AnimatedItem>
+          <Metric label="Active employees" value={String(activeEmployees)} />
+        </AnimatedItem>
+      </AnimatedList>
 
       <section className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
         <Card
@@ -94,7 +103,7 @@ export default async function Dashboard() {
           actions={
             <Link
               href="/sales"
-              className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+              className="rounded-xl border border-[#d8bf9f] bg-white/70 px-3 py-2 text-sm font-semibold text-[#4b2f22] hover:bg-[#fff8ef]"
             >
               View history
             </Link>
@@ -108,7 +117,7 @@ export default async function Dashboard() {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
-                <thead className="text-xs uppercase text-slate-500">
+                <thead className="text-xs uppercase text-[#8a6b58]">
                   <tr>
                     <th className="py-2 pr-4">Receipt</th>
                     <th className="py-2 pr-4">Date</th>
@@ -116,22 +125,22 @@ export default async function Dashboard() {
                     <th className="py-2 text-right">Total</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-200">
+                <tbody className="divide-y divide-[#ead8c5]">
                   {recentSales.map((sale) => (
-                    <tr key={sale.id}>
-                      <td className="py-3 pr-4 font-medium text-slate-950">
+                    <AnimatedRow key={sale.id}>
+                      <td className="py-3 pr-4 font-medium text-[#2c1810]">
                         {sale.receiptNo}
                       </td>
-                      <td className="py-3 pr-4 text-slate-500">
+                      <td className="py-3 pr-4 text-[#8a6b58]">
                         {formatDateTime(sale.createdAt)}
                       </td>
-                      <td className="py-3 pr-4 text-slate-500">
+                      <td className="py-3 pr-4 text-[#8a6b58]">
                         {sale.items.length}
                       </td>
                       <td className="py-3 text-right font-semibold">
                         {formatCurrency(sale.totalCents)}
                       </td>
-                    </tr>
+                    </AnimatedRow>
                   ))}
                 </tbody>
               </table>
@@ -148,17 +157,17 @@ export default async function Dashboard() {
                 {bestSellers.map((item) => (
                   <div
                     key={`${item.name}-${item.category}`}
-                    className="flex items-center justify-between gap-3 rounded-md bg-slate-50 px-3 py-2"
+                    className="flex items-center justify-between gap-3 rounded-2xl bg-[#fff8ef] px-3 py-2"
                   >
                     <div>
-                      <p className="text-sm font-semibold text-slate-950">
+                      <p className="text-sm font-semibold text-[#2c1810]">
                         {item.name}
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-[#8a6b58]">
                         {productCategoryLabels[item.category]}
                       </p>
                     </div>
-                    <span className="text-sm font-semibold text-emerald-700">
+                    <span className="text-sm font-semibold text-[#7a4b2c]">
                       {item.quantity}
                     </span>
                   </div>
@@ -176,10 +185,10 @@ export default async function Dashboard() {
                   <Link
                     key={product.id}
                     href={`/inventory/${product.id}/edit`}
-                    className="flex items-center justify-between rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm"
+                    className="flex items-center justify-between rounded-2xl border border-[#d8bf9f] bg-[#fff8ef] px-3 py-2 text-sm"
                   >
-                    <span className="font-medium text-slate-950">{product.name}</span>
-                    <span className="font-semibold text-amber-800">
+                    <span className="font-medium text-[#2c1810]">{product.name}</span>
+                    <span className="font-semibold text-[#9b5f25]">
                       {product.stock}/{product.lowStockThreshold}
                     </span>
                   </Link>
@@ -201,12 +210,12 @@ export default async function Dashboard() {
             {todayAttendance.map((record) => (
               <div
                 key={record.id}
-                className="rounded-md border border-slate-200 px-3 py-2 text-sm"
+                className="rounded-2xl border border-[#ead8c5] bg-white/60 px-3 py-2 text-sm"
               >
-                <p className="font-semibold text-slate-950">
+                <p className="font-semibold text-[#2c1810]">
                   {record.employee.firstName} {record.employee.lastName}
                 </p>
-                <p className="text-slate-500">{record.status}</p>
+                <p className="text-[#8a6b58]">{record.status}</p>
               </div>
             ))}
           </div>
@@ -216,11 +225,29 @@ export default async function Dashboard() {
   );
 }
 
-function Metric({ label, value }: { label: string; value: string }) {
+function Metric({
+  label,
+  value,
+  tone = "light",
+}: {
+  label: string;
+  value: string;
+  tone?: "light" | "dark";
+}) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-5">
-      <p className="text-sm font-medium text-slate-500">{label}</p>
-      <p className="mt-2 text-2xl font-semibold text-slate-950">{value}</p>
+    <div
+      className={
+        tone === "dark"
+          ? "rounded-3xl border border-[#2c1810] bg-[#2c1810] p-5 text-white shadow-[var(--shadow-soft)]"
+          : "rounded-3xl border border-[#ead8c5] bg-[#fffaf3] p-5 shadow-[var(--shadow-card)]"
+      }
+    >
+      <p className={tone === "dark" ? "text-sm font-medium text-[#ead8c5]" : "text-sm font-medium text-[#8a6b58]"}>
+        {label}
+      </p>
+      <p className={tone === "dark" ? "mt-2 text-2xl font-semibold text-white" : "mt-2 text-2xl font-semibold text-[#2c1810]"}>
+        {value}
+      </p>
     </div>
   );
 }

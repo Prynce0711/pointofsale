@@ -19,7 +19,7 @@ export default function StockAdjustmentForm({ productId }: { productId: number }
         <select
           name="type"
           defaultValue="STOCK_IN"
-          className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950"
+          className="coffee-focus rounded-xl border border-[#d8bf9f] bg-white px-3 py-2 text-sm text-[#2c1810]"
         >
           {STOCK_LOG_TYPES.map((type) => (
             <option key={type} value={type}>
@@ -32,12 +32,12 @@ export default function StockAdjustmentForm({ productId }: { productId: number }
           type="number"
           min="1"
           defaultValue="1"
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-950"
+          className="coffee-focus rounded-xl border border-[#d8bf9f] bg-white px-3 py-2 text-sm text-[#2c1810]"
         />
         <input
           name="note"
           placeholder="Note"
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-950"
+          className="coffee-focus rounded-xl border border-[#d8bf9f] bg-white px-3 py-2 text-sm text-[#2c1810]"
         />
         <SubmitButton pendingLabel="Updating..." className="w-full sm:w-auto">
           Save
@@ -46,4 +46,3 @@ export default function StockAdjustmentForm({ productId }: { productId: number }
     </form>
   );
 }
-

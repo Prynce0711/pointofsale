@@ -17,17 +17,17 @@ export default function Pagination({
     <div className="flex items-center justify-between gap-3 text-sm">
       <Link
         href={`${basePath}?page=${Math.max(1, currentPage - 1)}`}
-        className="rounded-md border border-slate-300 px-3 py-2 text-slate-700 aria-disabled:pointer-events-none aria-disabled:opacity-40"
+        className="rounded-xl border border-[#d8bf9f] bg-white/70 px-3 py-2 text-[#4b2f22] aria-disabled:pointer-events-none aria-disabled:opacity-40"
         aria-disabled={currentPage <= 1}
       >
         Previous
       </Link>
-      <span className="text-slate-500">
+      <span className="text-[#8a6b58]">
         Page {currentPage} of {totalPages}
       </span>
       <Link
         href={`${basePath}?page=${Math.min(totalPages, currentPage + 1)}`}
-        className="rounded-md border border-slate-300 px-3 py-2 text-slate-700 aria-disabled:pointer-events-none aria-disabled:opacity-40"
+        className="rounded-xl border border-[#d8bf9f] bg-white/70 px-3 py-2 text-[#4b2f22] aria-disabled:pointer-events-none aria-disabled:opacity-40"
         aria-disabled={currentPage >= totalPages}
       >
         Next

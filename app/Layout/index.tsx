@@ -1,7 +1,6 @@
-import Footer from "./Footer";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
 import { requireAuth } from "@/app/lib/auth";
+import PageTransition from "@/components/PageTransition";
 
 type AppShellProps = {
   title: string;
@@ -19,18 +18,16 @@ export default async function AppShell({
   const user = await requireAuth();
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-950">
-      <Sidebar />
-      <div className="flex min-h-screen flex-col lg:pl-64">
-        <Header
-          title={title}
-          subtitle={subtitle}
-          actions={actions}
-          userName={user.name}
-        />
-        <main className="flex-1 px-4 py-5 sm:px-6 lg:px-8">{children}</main>
-        <Footer />
-      </div>
-    </div>
+    <>
+      <Header
+        title={title}
+        subtitle={subtitle}
+        actions={actions}
+        userName={user.name}
+      />
+      <main className="flex-1 bg-transparent px-4 py-5 sm:px-6 lg:px-8">
+        <PageTransition>{children}</PageTransition>
+      </main>
+    </>
   );
 }

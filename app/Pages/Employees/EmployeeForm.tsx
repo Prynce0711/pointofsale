@@ -19,18 +19,18 @@ export default function EmployeeForm() {
           name="firstName"
           required
           placeholder="First name"
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-950"
+          className="coffee-focus rounded-2xl border border-[#d8bf9f] bg-white/80 px-3 py-2 text-sm text-[#2c1810]"
         />
         <input
           name="lastName"
           required
           placeholder="Last name"
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-950"
+          className="coffee-focus rounded-2xl border border-[#d8bf9f] bg-white/80 px-3 py-2 text-sm text-[#2c1810]"
         />
         <select
           name="role"
           defaultValue="BARISTA"
-          className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950"
+          className="coffee-focus rounded-2xl border border-[#d8bf9f] bg-white px-3 py-2 text-sm text-[#2c1810]"
         >
           {EMPLOYEE_ROLES.map((role) => (
             <option key={role} value={role}>
@@ -42,16 +42,15 @@ export default function EmployeeForm() {
           name="email"
           type="email"
           placeholder="Email"
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-950"
+          className="coffee-focus rounded-2xl border border-[#d8bf9f] bg-white/80 px-3 py-2 text-sm text-[#2c1810]"
         />
         <input
           name="phone"
           placeholder="Phone"
-          className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-950 md:col-span-2"
+          className="coffee-focus rounded-2xl border border-[#d8bf9f] bg-white/80 px-3 py-2 text-sm text-[#2c1810] md:col-span-2"
         />
       </div>
       <SubmitButton>Add employee</SubmitButton>
     </form>
   );
 }
-

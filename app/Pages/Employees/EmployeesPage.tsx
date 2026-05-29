@@ -9,6 +9,7 @@ import { prisma } from "@/app/lib/prisma";
 import Card from "@/app/Shared/Card/Card";
 import EmptyState from "@/app/Shared/EmptyState/EmptyState";
 import SubmitButton from "@/app/Shared/Form/SubmitButton";
+import { AnimatedRow } from "@/app/Shared/Motion/Motion";
 import EmployeeForm from "./EmployeeForm";
 
 export default async function EmployeesPage() {
@@ -31,7 +32,7 @@ export default async function EmployeesPage() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px] text-left text-sm">
-              <thead className="text-xs uppercase text-slate-500">
+              <thead className="text-xs uppercase text-[#8a6b58]">
                 <tr>
                   <th className="py-2 pr-4">Employee</th>
                   <th className="py-2 pr-4">Role</th>
@@ -40,25 +41,25 @@ export default async function EmployeesPage() {
                   <th className="py-2 text-right">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
+              <tbody className="divide-y divide-[#ead8c5]">
                 {employees.map((employee) => (
-                  <tr key={employee.id}>
+                  <AnimatedRow key={employee.id}>
                     <td className="py-4 pr-4">
-                      <p className="font-semibold text-slate-950">
+                      <p className="font-semibold text-[#2c1810]">
                         {employee.firstName} {employee.lastName}
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-[#8a6b58]">
                         {employeeStatusLabels[employee.status]}
                       </p>
                     </td>
-                    <td className="py-4 pr-4 text-slate-600">
+                    <td className="py-4 pr-4 text-[#4b2f22]">
                       {employeeRoleLabels[employee.role]}
                     </td>
-                    <td className="py-4 pr-4 text-slate-500">
+                    <td className="py-4 pr-4 text-[#8a6b58]">
                       {employee.email ?? "-"}
                       <span className="block">{employee.phone ?? ""}</span>
                     </td>
-                    <td className="py-4 pr-4 text-slate-500">
+                    <td className="py-4 pr-4 text-[#8a6b58]">
                       {formatDate(employee.createdAt)}
                     </td>
                     <td className="py-4 text-right">
@@ -70,7 +71,7 @@ export default async function EmployeesPage() {
                         <select
                           name="status"
                           defaultValue={employee.status}
-                          className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950"
+                          className="coffee-focus rounded-xl border border-[#d8bf9f] bg-white/80 px-3 py-2 text-sm text-[#2c1810]"
                         >
                           {EMPLOYEE_STATUSES.map((status) => (
                             <option key={status} value={status}>
@@ -83,7 +84,7 @@ export default async function EmployeesPage() {
                         </SubmitButton>
                       </form>
                     </td>
-                  </tr>
+                  </AnimatedRow>
                 ))}
               </tbody>
             </table>
@@ -93,4 +94,3 @@ export default async function EmployeesPage() {
     </div>
   );
 }
-

@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import { AnimatedButton } from "@/app/Shared/Motion/Motion";
 
 type SubmitButtonProps = {
   children: React.ReactNode;
@@ -11,11 +12,11 @@ type SubmitButtonProps = {
 
 const variants = {
   primary:
-    "bg-emerald-600 text-white hover:bg-emerald-700 disabled:bg-emerald-300",
+    "bg-[#7a4b2c] text-white shadow-sm shadow-[#7a4b2c]/20 hover:bg-[#61361f] disabled:bg-[#d9c3aa]",
   secondary:
-    "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 disabled:text-slate-400",
+    "border border-[#d8bf9f] bg-white/75 text-[#4b2f22] hover:bg-[#fff8ef] disabled:text-[#b79f8d]",
   danger:
-    "border border-rose-200 bg-white text-rose-700 hover:bg-rose-50 disabled:text-rose-300",
+    "border border-rose-200 bg-white/75 text-rose-700 hover:bg-rose-50 disabled:text-rose-300",
 };
 
 export default function SubmitButton({
@@ -27,12 +28,12 @@ export default function SubmitButton({
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <AnimatedButton
       type="submit"
       disabled={pending}
-      className={`inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed ${variants[variant]} ${className}`}
     >
       {pending ? pendingLabel : children}
-    </button>
+    </AnimatedButton>
   );
 }

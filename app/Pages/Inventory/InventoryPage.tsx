@@ -13,6 +13,7 @@ import DeleteButton from "@/app/Shared/ActionButton/Delete";
 import EditButton from "@/app/Shared/ActionButton/Edit";
 import Card from "@/app/Shared/Card/Card";
 import EmptyState from "@/app/Shared/EmptyState/EmptyState";
+import { AnimatedRow } from "@/app/Shared/Motion/Motion";
 import StockAdjustmentForm from "./StockAdjustmentForm";
 
 type InventoryPageProps = {
@@ -66,12 +67,12 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
             name="q"
             defaultValue={query}
             placeholder="Search name, SKU, barcode"
-            className="rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-950"
+            className="coffee-focus rounded-2xl border border-[#d8bf9f] bg-white/80 px-3 py-2 text-sm text-[#2c1810]"
           />
           <select
             name="category"
             defaultValue={category}
-            className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950"
+            className="coffee-focus rounded-2xl border border-[#d8bf9f] bg-white px-3 py-2 text-sm text-[#2c1810]"
           >
             <option value="">All categories</option>
             {PRODUCT_CATEGORIES.map((item) => (
@@ -80,7 +81,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
               </option>
             ))}
           </select>
-          <label className="flex items-center gap-2 rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-700">
+          <label className="flex items-center gap-2 rounded-2xl border border-[#d8bf9f] bg-white/70 px-3 py-2 text-sm text-[#4b2f22]">
             <input
               type="checkbox"
               name="lowStock"
@@ -91,7 +92,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
           </label>
           <button
             type="submit"
-            className="rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
+            className="rounded-2xl bg-[#2c1810] px-4 py-2 text-sm font-semibold text-white"
           >
             Apply
           </button>
@@ -107,7 +108,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[900px] text-left text-sm">
-              <thead className="text-xs uppercase text-slate-500">
+              <thead className="text-xs uppercase text-[#8a6b58]">
                 <tr>
                   <th className="py-2 pr-4">Product</th>
                   <th className="py-2 pr-4">Category</th>
@@ -117,19 +118,19 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
                   <th className="py-2 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
+              <tbody className="divide-y divide-[#ead8c5]">
                 {filteredProducts.map((product) => (
-                  <tr key={product.id} className="align-top">
+                  <AnimatedRow key={product.id} className="align-top">
                     <td className="py-4 pr-4">
-                      <p className="font-semibold text-slate-950">{product.name}</p>
-                      <p className="text-xs text-slate-500">
+                      <p className="font-semibold text-[#2c1810]">{product.name}</p>
+                      <p className="text-xs text-[#8a6b58]">
                         SKU {product.sku}
                         {product.barcode ? ` / Barcode ${product.barcode}` : ""}
                       </p>
                     </td>
-                    <td className="py-4 pr-4 text-slate-600">
+                    <td className="py-4 pr-4 text-[#6f4b35]">
                       {productCategoryLabels[product.category]}
-                      <span className="block text-xs text-slate-500">
+                      <span className="block text-xs text-[#8a6b58]">
                         {productSizeLabels[product.size]}
                       </span>
                     </td>
@@ -140,17 +141,17 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
                       <span
                         className={`rounded-full px-2 py-1 text-xs font-semibold ${
                           product.stock <= product.lowStockThreshold
-                            ? "bg-amber-50 text-amber-800"
-                            : "bg-emerald-50 text-emerald-700"
+                            ? "bg-[#fff1d8] text-[#9b5f25]"
+                            : "bg-[#efe4d2] text-[#6f4b35]"
                         }`}
                       >
                         {product.stock} in stock
                       </span>
-                      <span className="block pt-2 text-xs text-slate-500">
+                      <span className="block pt-2 text-xs text-[#8a6b58]">
                         Threshold {product.lowStockThreshold}
                       </span>
                     </td>
-                    <td className="py-4 pr-4 text-xs text-slate-500">
+                    <td className="py-4 pr-4 text-xs text-[#8a6b58]">
                       {product.isMenuItem ? "POS menu" : "Not on POS"}
                       <span className="block">
                         {product.isIngredient ? "Inventory item" : "Sales item"}
@@ -168,7 +169,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
                         <StockAdjustmentForm productId={product.id} />
                       </div>
                     </td>
-                  </tr>
+                  </AnimatedRow>
                 ))}
               </tbody>
             </table>
@@ -182,7 +183,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="text-xs uppercase text-slate-500">
+              <thead className="text-xs uppercase text-[#8a6b58]">
                 <tr>
                   <th className="py-2 pr-4">Date</th>
                   <th className="py-2 pr-4">Product</th>
@@ -191,25 +192,25 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
                   <th className="py-2">Stock</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
+              <tbody className="divide-y divide-[#ead8c5]">
                 {stockLogs.map((log) => (
-                  <tr key={log.id}>
-                    <td className="py-3 pr-4 text-slate-500">
+                  <AnimatedRow key={log.id}>
+                    <td className="py-3 pr-4 text-[#8a6b58]">
                       {formatDateTime(log.createdAt)}
                     </td>
-                    <td className="py-3 pr-4 font-medium text-slate-950">
+                    <td className="py-3 pr-4 font-medium text-[#2c1810]">
                       <Link href={`/inventory/${log.productId}/edit`}>
                         {log.product.name}
                       </Link>
                     </td>
-                    <td className="py-3 pr-4 text-slate-600">
+                    <td className="py-3 pr-4 text-[#6f4b35]">
                       {stockLogTypeLabels[log.type]}
                     </td>
                     <td className="py-3 pr-4">{log.quantity}</td>
                     <td className="py-3">
                       {log.previousStock} {"->"} {log.newStock}
                     </td>
-                  </tr>
+                  </AnimatedRow>
                 ))}
               </tbody>
             </table>

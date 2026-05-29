@@ -1,16 +1,16 @@
-"use server";
+﻿"use server";
 
 import { revalidatePath } from "next/cache";
-import { requireAuth } from "@/app/lib/auth";
-import { prisma } from "@/app/lib/prisma";
-import { startOfToday } from "@/app/lib/format";
+import { requireAuth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { startOfToday } from "@/lib/format";
 import {
   actionError,
   emptyActionState,
   idFromForm,
   optionalString,
   type ActionState,
-} from "@/app/lib/validation";
+} from "@/lib/validation";
 
 export async function timeInAction(
   _prevState: ActionState = emptyActionState,
@@ -143,3 +143,4 @@ function revalidateAttendance() {
   revalidatePath("/attendance");
   revalidatePath("/dashboard");
 }
+

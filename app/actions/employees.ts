@@ -1,9 +1,9 @@
-"use server";
+﻿"use server";
 
 import { revalidatePath } from "next/cache";
-import { requireAuth } from "@/app/lib/auth";
-import { prisma } from "@/app/lib/prisma";
-import { EMPLOYEE_ROLES, EMPLOYEE_STATUSES } from "@/app/lib/labels";
+import { requireAuth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { EMPLOYEE_ROLES, EMPLOYEE_STATUSES } from "@/lib/labels";
 import {
   actionError,
   emptyActionState,
@@ -12,7 +12,7 @@ import {
   optionalString,
   requiredString,
   type ActionState,
-} from "@/app/lib/validation";
+} from "@/lib/validation";
 
 export async function createEmployeeAction(
   _prevState: ActionState = emptyActionState,
@@ -62,3 +62,4 @@ function revalidateEmployees() {
   revalidatePath("/attendance");
   revalidatePath("/dashboard");
 }
+

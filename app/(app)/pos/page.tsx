@@ -1,6 +1,6 @@
-import AppShell from "@/app/Layout/index";
-import POSClient, { type POSProduct } from "@/app/Pages/PointOfSale/POSClient";
-import { prisma } from "@/app/lib/prisma";
+﻿import AppShell from "@/components/layout/AppShell";
+import POSClient, { type POSProduct } from "@/features/pos/components/POSClient";
+import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
@@ -50,3 +50,4 @@ export default async function POSPage() {
     </AppShell>
   );
 }
+

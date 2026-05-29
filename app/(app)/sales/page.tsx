@@ -1,5 +1,5 @@
-import AppShell from "@/app/Layout/index";
-import SalesHistoryPage from "@/app/Pages/Sales/SalesHistoryPage";
+﻿import AppShell from "@/components/layout/AppShell";
+import SalesHistoryPage from "@/features/sales/components/SalesHistoryPage";
 
 export const dynamic = "force-dynamic";
 
@@ -19,3 +19,4 @@ export default async function Page({
     </AppShell>
   );
 }
+

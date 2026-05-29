@@ -1,5 +1,5 @@
-import AppShell from "@/app/Layout/index";
-import EmployeesPage from "@/app/Pages/Employees/EmployeesPage";
+﻿import AppShell from "@/components/layout/AppShell";
+import EmployeesPage from "@/features/employees/components/EmployeesPage";
 
 export const dynamic = "force-dynamic";
 
@@ -13,3 +13,4 @@ export default function Page() {
     </AppShell>
   );
 }
+

@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
-import AppShell from "@/app/Layout/index";
-import ProductForm from "@/app/Pages/Inventory/ProductForm";
-import { prisma } from "@/app/lib/prisma";
-import Card from "@/app/Shared/Card/Card";
+﻿import { notFound } from "next/navigation";
+import AppShell from "@/components/layout/AppShell";
+import ProductForm from "@/features/inventory/components/ProductForm";
+import { prisma } from "@/lib/prisma";
+import Card from "@/components/ui/Card/Card";
 
 export const dynamic = "force-dynamic";
 

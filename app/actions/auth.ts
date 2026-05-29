@@ -1,4 +1,4 @@
-"use server";
+﻿"use server";
 
 import { redirect } from "next/navigation";
 import {
@@ -6,22 +6,20 @@ import {
   createSession,
   ensureDefaultAdmin,
   verifyPassword,
-} from "@/app/lib/auth";
-import { prisma } from "@/app/lib/prisma";
+} from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import {
   actionError,
   emptyActionState,
   requiredString,
   type ActionState,
-} from "@/app/lib/validation";
+} from "@/lib/validation";
 
 export async function loginAction(
   _prevState: ActionState = emptyActionState,
   formData: FormData,
 ): Promise<ActionState> {
   void _prevState;
-
-  let shouldRedirect = false;
 
   try {
     await ensureDefaultAdmin();
@@ -35,13 +33,8 @@ export async function loginAction(
     }
 
     await createSession(user.id);
-    shouldRedirect = true;
   } catch (error) {
     return actionError(error);
-  }
-
-  if (shouldRedirect) {
-    redirect("/dashboard");
   }
 
   return { ok: true, message: "Login successful." };
@@ -51,4 +44,5 @@ export async function logoutAction() {
   await clearSession();
   redirect("/");
 }
+
 

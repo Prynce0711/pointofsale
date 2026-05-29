@@ -1,5 +1,4 @@
-import Footer from "@/app/Layout/Footer";
-import Sidebar from "@/app/Layout/Sidebar";
+﻿import { Footer, Sidebar } from "@/components/layout";
 
 export default function AppLayout({
   children,
@@ -16,3 +15,4 @@ export default function AppLayout({
     </div>
   );
 }
+

@@ -1,6 +1,6 @@
-import AppShell from "@/app/Layout/index";
-import ProductForm from "@/app/Pages/Inventory/ProductForm";
-import Card from "@/app/Shared/Card/Card";
+﻿import AppShell from "@/components/layout/AppShell";
+import ProductForm from "@/features/inventory/components/ProductForm";
+import Card from "@/components/ui/Card/Card";
 
 export default function NewProductPage() {
   return (
@@ -14,3 +14,4 @@ export default function NewProductPage() {
     </AppShell>
   );
 }
+

@@ -1,5 +1,5 @@
-import AppShell from "@/app/Layout/index";
-import AttendancePage from "@/app/Pages/Attendance/AttendancePage";
+﻿import AppShell from "@/components/layout/AppShell";
+import AttendancePage from "@/features/attendance/components/AttendancePage";
 
 export const dynamic = "force-dynamic";
 
@@ -13,3 +13,4 @@ export default function Page() {
     </AppShell>
   );
 }
+

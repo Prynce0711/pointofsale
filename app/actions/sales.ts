@@ -1,16 +1,16 @@
-"use server";
+﻿"use server";
 
 import { revalidatePath } from "next/cache";
 import type { Prisma } from "@prisma/client";
-import { requireAuth } from "@/app/lib/auth";
-import { prisma } from "@/app/lib/prisma";
+import { requireAuth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import {
   ORDER_TYPES,
   TEMPERATURE_OPTIONS,
   type OrderTypeValue,
   type TemperatureValue,
-} from "@/app/lib/labels";
-import { getErrorMessage } from "@/app/lib/ui";
+} from "@/lib/labels";
+import { getErrorMessage } from "@/lib/ui";
 
 export type CheckoutLineInput = {
   productId: number;
@@ -287,3 +287,4 @@ function createReceiptNo() {
 
   return `CS-${year}${month}${day}-${time}-${suffix}`;
 }
+

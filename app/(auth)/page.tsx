@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
-import LoginPage from "@/app/Pages/Login/LoginPage";
-import { getCurrentUser } from "@/app/lib/auth";
-import PageTransition from "@/components/PageTransition";
+﻿import { redirect } from "next/navigation";
+import LoginPage from "@/features/auth/components/LoginPage";
+import { getCurrentUser } from "@/lib/auth";
+import PageTransition from "@/components/common/PageTransition";
 
 export const dynamic = "force-dynamic";
 
@@ -18,3 +18,4 @@ export default async function Home() {
     </PageTransition>
   );
 }
+

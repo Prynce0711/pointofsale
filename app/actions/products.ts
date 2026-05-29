@@ -1,13 +1,13 @@
-"use server";
+﻿"use server";
 
 import { revalidatePath } from "next/cache";
-import { requireAuth } from "@/app/lib/auth";
-import { prisma } from "@/app/lib/prisma";
+import { requireAuth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import {
   PRODUCT_CATEGORIES,
   PRODUCT_SIZES,
   STOCK_LOG_TYPES,
-} from "@/app/lib/labels";
+} from "@/lib/labels";
 import {
   actionError,
   centsFromForm,
@@ -19,7 +19,7 @@ import {
   optionalString,
   requiredString,
   type ActionState,
-} from "@/app/lib/validation";
+} from "@/lib/validation";
 
 type ParsedProduct = {
   name: string;
@@ -244,3 +244,4 @@ function revalidateCatalog() {
   revalidatePath("/pos");
   revalidatePath("/dashboard");
 }
+

@@ -1,5 +1,5 @@
-import AppShell from "@/app/Layout/index";
-import Dashboard from "@/app/Pages/Dashboard/Dashboard";
+﻿import AppShell from "@/components/layout/AppShell";
+import Dashboard from "@/features/dashboard/components/Dashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -13,3 +13,4 @@ export default function DashboardPage() {
     </AppShell>
   );
 }
+

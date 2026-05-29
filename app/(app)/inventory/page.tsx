@@ -1,6 +1,6 @@
-import AppShell from "@/app/Layout/index";
-import InventoryPage from "@/app/Pages/Inventory/InventoryPage";
-import AddButton from "@/app/Shared/ActionButton/Add";
+﻿import AppShell from "@/components/layout/AppShell";
+import InventoryPage from "@/features/inventory/components/InventoryPage";
+import AddButton from "@/components/ui/ActionButton/Add";
 
 export const dynamic = "force-dynamic";
 
@@ -19,3 +19,4 @@ export default async function Page({
     </AppShell>
   );
 }
+

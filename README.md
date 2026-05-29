@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bean Counter POS
 
-## Getting Started
+A coffee shop point-of-sale system built with Next.js, Tailwind CSS, and Framer Motion. It includes a login experience, a persistent app shell, and smooth content transitions across dashboard sections.
 
-First, run the development server:
+## Highlights
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Coffee-themed UI with warm palette and premium typography
+- Smooth page transitions for dashboard sections
+- Persistent sidebar layout for stable navigation
+- Prisma + SQLite data layer
+
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- Framer Motion
+- Prisma + SQLite
+
+## App Routes
+
+- Login / landing: app/(auth)/page.tsx
+- Dashboard sections (shared layout): app/(app)/
+  - dashboard
+  - pos
+  - inventory
+  - sales
+  - reports
+  - attendance
+  - employees
+
+## Project Structure
+
+- app/(auth) - login route group (with loading screen)
+- app/(app) - authenticated routes wrapped by persistent layout
+- components/layout - AppShell, Header, Footer, Sidebar
+- components/common - shared utilities like PageTransition
+- components/ui - reusable UI elements (buttons, cards, tables)
+- features - feature-specific UI for auth, dashboard, inventory, POS, etc.
+- lib - shared utilities (auth, prisma, formatting, labels)
+- prisma - Prisma schema and migrations
+
+## File Organization
+
+```
+app/
+  globals.css
+  layout.tsx
+  (auth)/
+    loading.tsx
+    page.tsx
+  (app)/
+    layout.tsx
+    dashboard/
+      page.tsx
+    pos/
+      page.tsx
+    inventory/
+      page.tsx
+      new/
+        page.tsx
+      [id]/
+        edit/
+          page.tsx
+    sales/
+      page.tsx
+    reports/
+      page.tsx
+    attendance/
+      page.tsx
+    employees/
+      page.tsx
+components/
+  layout/
+    AppShell.tsx
+    Header.tsx
+    Footer.tsx
+    Sidebar.tsx
+    index.ts
+  common/
+    PageTransition.tsx
+  ui/
+features/
+  auth/
+    components/
+      LoginPage.tsx
+  dashboard/
+    components/
+      Dashboard.tsx
+  pos/
+    components/
+      POSClient.tsx
+  inventory/
+    components/
+      InventoryPage.tsx
+      ProductForm.tsx
+      StockAdjustmentForm.tsx
+  sales/
+    components/
+      SalesHistoryPage.tsx
+  reports/
+    components/
+      ReportsPage.tsx
+  attendance/
+    components/
+      AttendancePage.tsx
+      AttendanceControls.tsx
+  employees/
+    components/
+      EmployeesPage.tsx
+      EmployeeForm.tsx
+lib/
+  auth.ts
+  auth-constants.ts
+  format.ts
+  labels.ts
+  navigation.ts
+  prisma.ts
+  ui.ts
+  validation.ts
+prisma/
+  schema.prisma
+public/
+README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm install
+```
 
-## Learn More
+2. Configure environment
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cp .env.example .env
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Generate Prisma client
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm prisma:generate
+```
 
-## Deploy on Vercel
+4. Run database migrations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm prisma:migrate
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Start the dev server
+
+```bash
+pnpm dev
+```
+
+Open http://localhost:3000
+
+## Environment Variables
+
+Set these in .env:
+
+- DATABASE_URL - SQLite connection string (example: file:./dev.db)
+- AUTH_SECRET - long random secret for session auth
+
+## Scripts
+
+- pnpm dev - start dev server
+- pnpm build - production build
+- pnpm start - start production server
+- pnpm lint - run ESLint
+- pnpm prisma:generate - generate Prisma client
+- pnpm prisma:migrate - run Prisma migrations
+
+## UI Notes
+
+- Page transitions are handled by components/common/PageTransition.tsx
+- Sidebar is mounted in app/(app)/layout.tsx to stay stable across navigations
+- Root background is set in app/globals.css to prevent white flashes

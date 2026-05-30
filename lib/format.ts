@@ -46,4 +46,3 @@ export function startOfTomorrow() {
   const today = startOfToday();
   return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 }
-

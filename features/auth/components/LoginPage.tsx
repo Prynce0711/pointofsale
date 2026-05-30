@@ -114,10 +114,7 @@ export default function LoginPage() {
                 </SubmitButton>
               </form>
 
-              <p className="mt-5 rounded-2xl border border-[#E6D2BC] bg-[#f3e6d5] px-3 py-2 text-xs text-[#6f4b35]">
-                First run account: {DEFAULT_ADMIN_EMAIL} /{" "}
-                {DEFAULT_ADMIN_PASSWORD}. Change this before real use.
-              </p>
+
             </motion.section>
 
             <motion.aside
@@ -131,41 +128,44 @@ export default function LoginPage() {
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-wide text-[#d7a260]">
-                      Morning Service
+                      Coffee Moments
                     </p>
                     <h2 className="font-display mt-2 max-w-md text-3xl font-semibold leading-tight sm:text-4xl">
-                      A stable workspace for fast cafe operations.
+                      A calm, cozy pour for every shift.
                     </h2>
+                    <p className="mt-3 max-w-md text-sm text-[#ead9c4]">
+                      Warm aroma, soft textures, and a gentle start to the day.
+                    </p>
                   </div>
                   <CoffeeMark compact />
                 </div>
 
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <CafeStat label="Orders" value="128" />
-                  <CafeStat label="Best seller" value="Iced Latte" />
-                  <CafeStat label="Stock alert" value="6 items" />
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Aroma",
+                    "Balance",
+                    "Comfort",
+                    "Slow Brew",
+                    "Cafe Ritual",
+                  ].map((label) => (
+                    <span
+                      key={label}
+                      className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#ead9c4]"
+                    >
+                      {label}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="rounded-3xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-sm text-[#ead9c4]">Next checkout</p>
-                      <p className="mt-1 text-xl font-semibold">Caramel Macchiato</p>
-                    </div>
-                    <span className="rounded-full bg-[#d7a260] px-3 py-1 text-sm font-semibold text-[#2c1810]">
-                      Ready
-                    </span>
-                  </div>
-                  <div className="mt-4 grid gap-2 text-sm text-[#ead9c4]">
-                    <div className="flex justify-between">
-                      <span>Medium / Iced</span>
-                      <span>PHP 165.00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Extra shot</span>
-                      <span>PHP 25.00</span>
-                    </div>
-                  </div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-[#d7a260]">
+                    Coffee Ritual
+                  </p>
+                  <p className="mt-2 text-xl font-semibold">Sip. Savor. Reset.</p>
+                  <p className="mt-2 text-sm text-[#ead9c4]">
+                    A quiet pause between rushes, with coffee that feels like
+                    home.
+                  </p>
                 </div>
               </div>
             </motion.aside>

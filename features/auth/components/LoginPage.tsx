@@ -257,12 +257,6 @@ function CoffeeMark({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function CafeStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur">
-      <p className="text-xs uppercase tracking-wide text-[#d7a260]">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-[#FFFAF3]">{value}</p>
-    </div>
-  );
-}
+
+
 

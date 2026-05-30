@@ -1,12 +1,13 @@
 # Bean Counter POS
 
-A coffee shop point-of-sale system built with Next.js, Tailwind CSS, and Framer Motion. It includes a login experience, a persistent app shell, and smooth content transitions across dashboard sections.
+A coffee shop point-of-sale and operations suite built with Next.js, Tailwind CSS, and Framer Motion. It includes an animated login experience, a persistent app shell, and smooth transitions across POS, inventory, sales, and reporting views.
 
 ## Highlights
 
 - Coffee-themed UI with warm palette and premium typography
-- Smooth page transitions for dashboard sections
-- Persistent sidebar layout for stable navigation
+- POS cart and checkout flow with live totals
+- Inventory, sales history, reports, attendance, and employees modules
+- Smooth page transitions with a persistent app shell
 - Prisma + SQLite data layer
 
 ## Tech Stack
@@ -124,7 +125,7 @@ public/
 README.md
 ```
 
-## Local Setup
+## Setup & Run
 
 1. Install dependencies
 
@@ -132,10 +133,11 @@ README.md
 pnpm install
 ```
 
-2. Configure environment
+2. Create a local .env file
 
 ```bash
-cp .env.example .env
+DATABASE_URL="file:./dev.db"
+AUTH_SECRET="replace-with-a-long-random-secret"
 ```
 
 3. Generate Prisma client
